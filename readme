@@ -1,0 +1,56 @@
+Time Series Forecasting with LSTM
+
+This project involves training a Long Short-Term Memory (LSTM) model for time series forecasting, specifically for sales data. The project includes data preprocessing, model training, prediction generation, and visualization of results using FastAPI.
+
+Python Version: Compatible with 3.8 and above.(Currently used 3.12.3)
+
+Project Structure:
+main.py: FastAPI application that provides endpoints for interacting with the model, including prediction generation and visualization.
+trained_model.py: Script for training the LSTM model and generating predictions. It also handles data saving and visualization.
+templates/: Directory containing HTML templates for the FastAPI application.
+static/: Directory for static files such as images and CSS used in the HTML templates.
+
+Install the required packages: pip install -r requirements.txt
+
+Usage:
+Training the Model
+To train the LSTM model, run the trained_model.py script. This script will:
+
+Load the dataset.
+
+Split the data into training and test sets.
+
+Train the LSTM model.
+
+Save the model, scaler, and other necessary files.
+
+Generate and save predictions and visualizations.
+python trained_model.py
+
+Start the FastAPI server: uvicorn main:app --reload
+
+Navigate to http://127.0.0.1:8000 in your browser.
+
+You will see the main page where you can interact with the model. You can:
+Generate predictions for a specified number of months.
+Retrieve predictions for a specific date.
+View predictions for a date range.
+View plots comparing actual sales with predicted sales.
+
+Endpoints
+GET /: Displays the main page with options to generate predictions and view results.
+POST /get_prediction: Generates predictions for the specified number of months.
+POST /get_specific_prediction: Retrieves predictions for a specific date.
+POST /get_predictions_range: Retrieves predictions for a specified date range.
+GET /plot: Returns the plot comparing actual and predicted sales.
+GET /graph: Returns the graph of test vs predicted data.
+GET /training_validation_graph: Returns the graph of training and validation loss.
+GET /graphs: Displays a page with all graphs.
+
+Files
+trained_model.h5: Saved LSTM model.
+scaler.pkl: Saved MinMaxScaler object.
+train_data.csv: Training data.
+test_data.csv: Test data.
+test_vs_predictions.csv: CSV file with test vs predicted data.
+sales_vs_predictions.png: Plot comparing actual and predicted sales.
